@@ -1,0 +1,87 @@
+{% extends 'accounts/layouts/base.html' %}
+{% block title %} Login {% endblock %}
+{% block content %}
+
+    <!-- auth-page wrapper -->
+    <div class="d-flex justify-content-center align-items-center min-vh-100">
+        <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row g-4">
+                                <div class="col-lg-6 d-none d-lg-block">
+                                    <div class="d-flex flex-column gap-4 ps-5 pt-5 h-100 bg-black border rounded-4 text-white">
+                                        <div style="color: #cdced0" class="fw-bolder fs-8 mt-5">MEDIMO –  メディモ</div>
+                                        <div class="fs-16">
+                                            広報の効果検証やリスク監視を自動化し、 <br>
+                                            今までよりもっと簡単に、もっと精密に
+                                        </div>
+                                        
+                                        <div class="fs-8">
+                                            多種多様なWEBニュース記事の中から、登録したキーワードを <br>
+                                            自動的に検知し、リスト化し表示します。
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end col -->
+
+                                <div class="col-lg-6">
+                                    <div class="p-lg-5 p-4">
+                                        <div class="d-flex flex-column w-25">
+                                        <span class="text-muted align-self-end">Toolbox</span>
+                                        <h5 class="text-dark fw-bolder fs-24">MEDIMO</h5>
+                                    </div>
+
+                                        <div class="mt-4">
+                                        
+                                            {% if messages %}
+                                                <div class="alert alert-danger">
+                                                    {% for message in messages %}
+                                                        {{ message }}
+                                                    {% endfor %}
+                                                </div>
+                                            {% endif %}
+                                        
+                                            <form method="post" action="{% url 'accounts:login' %}">
+                                                {% csrf_token %}
+                                                <div class="mb-3">
+                                                    <label for="username" class="form-label">Workspace id</label>
+                                                    <input required type="text" name="workspace_id" class="form-control bg-light border-0" id="workspace_id">
+                                                </div>
+                                                
+                                                <div class="mb-3">
+                                                    <label for="username" class="form-label">Email / Username</label>
+                                                    <input required type="text" name="username_or_email" class="form-control bg-light border-0" id="username_or_email">
+                                                </div>
+                                                
+                                                <div class="mb-3">
+                                                    <label for="username" class="form-label">Password</label>
+                                                    <input required type="password" class="form-control bg-light border-0" name="password" id="password">
+                                                </div>
+
+                                                <div class="mb-3 d-flex justify-content-end">
+                                                    <a href="#" class="text-muted text-decoration-underline">パスワードを忘れた場合</a>
+                                                </div>
+
+                                                <div class="mt-6">
+                                                    <button style="background: black; color: white" class="btn w-50" type="submit"><span>ログイン</span><i class="ri-arrow-right-circle-fill ms-4 fs-4"></i></button>
+                                                </div>
+
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- end col -->
+                            </div>
+                    </div>
+                    <!-- end col -->
+
+                </div>
+                <!-- end row -->
+            </div>
+    </div>
+    <!-- end auth-page-wrapper -->
+    
+    
+{% endblock %}

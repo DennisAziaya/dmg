@@ -1,0 +1,112 @@
+{% load static %}
+<div style="background-color: #f4e2c3" class="app-menu navbar-menu">
+
+        <div class="navbar-brand-box mb-2">
+            <!-- LOGO -->
+            <a href="{% url 'accounts:dashboard' %}" class="logo logo-dark">
+                <span class="logo-sm">
+                    <img src="{% static 'accounts/assets/images/logo-icon.png' %}" alt="" height="22">
+                </span>
+            </a>
+            <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
+                <i class="ri-record-circle-line"></i>
+            </button>
+            </div>
+            
+            <div class="d-flex align-items-center m-2 rounded-2">
+                <div class="px-2">
+                    <img src="{% static 'accounts/assets/images/logo-icon.png' %}"  alt="logo" height="30">
+                </div>
+                <div class="p-1 fs-6">
+                    <div class="fw-bold" style="color: gray">Workspace</div>
+                    <div class="text-dark fw-bold">Demo Workspace</div>
+                </div>
+            </div>
+    
+            <div class="d-flex align-items-center text-white m-2 rounded-2 bg-black  position-relative">
+                <div class="px-2">
+                    <img src="{% static 'accounts/assets/images/icon.png' %}"  alt="logo" height="28">
+                </div>
+                <div class="border-start border-2 border-white p-2">
+                    <div>App</div>
+                    
+                    <div class="d-flex align-items-center gap-2" >
+                        <div>{% if feature.title %}{{ feature.title }} {% else %} Select Feature {% endif %}</div>
+                        <div class="btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></div>
+                        <div class="dropdown-menu">
+                             {% for feature in features %}
+                            	<a class="dropdown-item" href="{% url 'app:feature' feature.id %}">{{ feature.title }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+ 
+            <div id="scrollbar">
+                <div class="container-fluid">
+
+                    <div id="two-column-menu"></div>
+                    <ul class="navbar-nav" id="navbar-nav">
+                        <li class="nav-item mt-4">
+                            <a class="nav-link menu-link" href="{% url 'accounts:dashboard' %}">
+                                <i data-feather="home" class="icon-dual"></i> <span data-key="t-dashboards">Dashboards</span>
+                            </a>
+                        </li>
+                    
+                        {% for category in feature.categories.all %}
+                            <li class="nav-item">
+                            <a class="nav-link menu-link" href="{% url 'app:category' category.id %}">
+                                <i data-feather="more-vertical" class="icon-dual"></i> <span data-key="t-dashboards">{{ category.name }}</span>
+                            </a>
+                        </li>
+                        {% endfor %}
+                      
+                        
+
+                        <li class="my-4">
+                            <form method="get" action="{% url 'app:sub_category_search' %}" style="color: #babebe" class="border-top border-bottom">
+                            <div class="d-flex align-items-center ">
+                                <span class="mdi mdi-magnify ps-3 fs-4 text-dark"></span>
+                                <input type="text" class="form-control border-0 flex-grow-1 text-black bg-transparent" name="search" placeholder="Search..." autocomplete="off"  autofocus value={{ search_term }}>
+                                <button type="submit" class="d-none">Search</button>
+                            </div>
+                        </form>
+                        </li>
+
+                        
+                    {% if search %}
+                        {% if data_lists %}
+                            {% for result in data_lists %}
+                                <li class="nav-item">
+                            <a class="nav-link menu-link" href="{% url 'app:sub_category' result.id %}">
+                                <i data-feather="hash" class="icon-dual"></i> <span data-key="t-widgets">{{ result.name }}</span>
+                            </a>
+                        </li>
+                            {% endfor %}
+                    {% else %}
+                        <li class="nav-link menu-link" >No result found</li>
+                    {% endif %}
+                    {% elif detail.sub_categories %}
+                    {% for item in detail.sub_categories.all %}
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="{% url 'app:sub_category' item.id %}">
+                                <i data-feather="hash" class="icon-dual"></i> <span data-key="t-widgets">{{ item.name }}</span>
+                            </a>
+                        </li>
+                        {% empty %}
+                        <li class="nav-link menu-link">No Data available</li>
+                    {% endfor %}
+                        
+{#                    {% else %}#}
+{#                        <li class="nav-link menu-link">Not Category Selected</li>#}
+                    {% endif %} 
+                    
+                    
+                    </ul>
+                </div>
+                <!-- Sidebar -->
+            </div>
+
+            <div class="sidebar-background"></div>
+        </div>
+        <!-- Left Sidebar End -->

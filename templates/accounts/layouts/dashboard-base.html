@@ -1,0 +1,61 @@
+{% extends 'accounts/layouts/base.html' %}
+{% block theme-type %} dark {% endblock %}
+{% block title %} 
+    {% block dash-title %}  {% endblock %}
+{% endblock %}
+{% block content %}
+
+    
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+
+        <!-- Header -->
+        {% include 'accounts/includes/header.html' %}
+        
+        <!-- removeNotificationModal -->
+        {% include 'accounts/includes/notification-modal.html' %}
+        
+
+
+        <!-- ========== App Menu ========== -->
+        {% include 'accounts/includes/left-sidebar.html' %}
+        <!-- Vertical Overlay-->
+{#        <div class="vertical-overlay"></div>#}
+        
+     <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                        <h4 class="mb-sm-0 text-capitalize">{% block page-title %} {% endblock %}</h4>
+                    </div>
+                </div>
+            </div>
+               {% block dash-content %}
+    
+                
+                   
+                {% endblock %}
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+    </div>
+        <!-- end main content-->
+
+    </div>
+    <!-- END layout-wrapper -->
+    
+
+    <!--preloader-->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner-border text-primary avatar-sm" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

@@ -1,0 +1,71 @@
+{% load static %}
+<!doctype html>
+<html lang="en" data-layout="vertical" data-topbar="dark" data-sidebar="light" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable" data-bs-theme={% block theme-type %} {% endblock %}>
+
+<head>
+    <meta charset="utf-8" />
+    <title>{% block title %} {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Layout config Js -->
+    <script src="{% static 'accounts/assets/js/layout.js' %}"></script>
+    <!-- Bootstrap Css -->
+    <link href="{% static 'accounts/assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="{% static 'accounts/assets/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="{% static 'accounts/assets/css/app.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- custom Css-->
+    <link href="{% static 'accounts/assets/css/custom.min.css' %}" rel="stylesheet" type="text/css" />
+  
+
+    
+    {#    Google Icon#}
+    <link href="{% static 'accounts/assets/css/main.css' %}" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    {% block content %}
+
+        
+        
+        
+        
+    {% endblock %}
+
+    <!-- JAVASCRIPT -->
+    <script src="{% static 'accounts/assets/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'accounts/assets/libs/simplebar/simplebar.min.js' %}"></script>
+    <script src="{% static 'accounts/assets/libs/node-waves/waves.min.js' %}"></script>
+    <script src="{% static 'accounts/assets/libs/feather-icons/feather.min.js' %}"></script>
+    <script src="{% static 'accounts/assets/js/pages/plugins/lord-icon-2.1.0.js' %}"></script>
+    <script src="{% static 'accounts/assets/js/plugins.js' %}"></script>
+
+    <!-- password-addon init -->
+    <script src="{% static 'accounts/assets/js/pages/password-addon.init.js' %}"></script>
+
+
+{#    Dashbord#}
+    <!-- apexcharts -->
+    <script src="{% static 'accounts/assets/libs/apexcharts/apexcharts.min.js' %}"></script>
+    <!-- projects js -->
+    <script src="{% static 'accounts/assets/js/pages/dashboard-projects.init.js' %}"></script>
+    <!-- echarts js -->
+    <script src="{% static 'accounts/assets/libs/echarts/echarts.min.js' %}"></script>
+
+    <!-- echarts init -->
+    <script src="{% static 'accounts/assets/js/pages/echarts.init.js' %}"></script>
+    <!-- App js -->
+    <script src="{% static 'accounts/assets/js/app.js' %}"></script>
+
+
+
+</body>
+
+</html>
